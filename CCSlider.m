@@ -110,8 +110,9 @@
     CGPoint location = [self locationFromTouch:touch];
     bool isTouchHandled = [self isTouchForMe:location];
     if (isTouchHandled) {
-        CCSprite *thumb = (CCSprite *)[[self children] objectAtIndex:1];
-        thumb.color = ccYELLOW;
+        CCMenuItem *thumb = _thumb;
+        [thumb selected];
+		
         CGPoint pos = thumb.position;
         pos.x = location.x;
         thumb.position = pos;
@@ -134,7 +135,7 @@
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CCSprite *thumb = (CCSprite *)[[self children] objectAtIndex:1];
-    thumb.color = ccWHITE;
+    [_thumb unselected];
     self.value = (thumb.position.x - minX) / (maxX - minX);
 }
 #endif
