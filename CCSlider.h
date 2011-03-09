@@ -1,28 +1,37 @@
 //
-//  CCSliderControl.h
-//  AmericanTomato
+//  CCSlider.h
+//  CCSliderControl from http://srooltheknife.blogspot.com/
+//  https://bitbucket.org/iroth_net/ccslider
 //
-//  Created by iroth on 1/5/11.
-//  Copyright 2011 iRoth.net. All rights reserved.
-//
+//  Created by Israel Roth 
+//	Edited by Stepan Generalov on 23.01.11 for 
+//   iTraceur - Parkour / Freerunning Platform Game
+//         http://www.iTraceur.ru
 
-#import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@protocol CCSliderControlDelegate
+static const NSInteger kCCSliderPriority = kCCMenuTouchPriority - 2;
 
-- (void) valueChanged: (float) value tag: (int) tag;
+@protocol CCSliderControlDelegate  
+- (void) valueChanged: (float) value tag: (int) tag;  
+@end  
 
-@end
+@interface CCSlider : CCLayer 
+{  
+	float value;  
+	id<CCSliderControlDelegate> delegate;  
+	float minX;  
+	float maxX;  
+	
+	// weak links to children
+	CCMenuItem *_thumb;
+	CCSprite *_bg;
+}  
 
-@interface CCSliderControl : CCLayer {
-	float value;
-	id<CCSliderControlDelegate> delegate;
-	float minX;
-	float maxX;
-}
+@property (nonatomic, assign) float value;  
+@property (nonatomic, retain) id<CCSliderControlDelegate> delegate; 
 
-@property (nonatomic, assign) float value;
-@property (nonatomic, retain) id<CCSliderControlDelegate> delegate;
++(id) sliderWithBackgroundSprite: (CCSprite *) bgSprite thumbMenuItem: (CCMenuItem *) aThumb;  
+-(id) initWithBackgroundSprite: (CCSprite *) bgSprite thumbMenuItem: (CCMenuItem *) aThumb;
 
-@end
+@end  
