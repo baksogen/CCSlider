@@ -28,7 +28,7 @@ How to handle value changes
 	- (void) valueChanged: (float) value tag: (int) tag; 
 	{
 		// range sentinel
-		value = MIN(value, 100.0f);
+		value = MIN(value, 1.0f);
 		value = MAX(value, 0.0f);
 		
 		// set value * 100
