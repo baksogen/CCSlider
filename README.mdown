@@ -1,3 +1,8 @@
+ATTENTION: Repo Moved!
+======================
+CCSlider is now a part of [Cocos2d-iPhone-Extensions](https://github.com/cocos2d/cocos2d-iphone-extensions) repository.   
+All further development will go there
+
 CCSlider
 ==================
 
